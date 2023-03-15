@@ -1,6 +1,6 @@
-import express from "express";
-import bodyParser from "body-parser";
-import {
+const express = require("express");
+const bodyParser = require("body-parser");
+const {
   readTeachers,
   readStudents,
   addStudent,
@@ -12,7 +12,7 @@ import {
   updateStudent,
   updateTeacher,
   dbinitialize
-} from "./database.js";
+} = require("./database.js");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
