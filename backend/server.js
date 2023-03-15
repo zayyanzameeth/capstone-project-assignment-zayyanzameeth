@@ -1,6 +1,6 @@
-const express = require ("express");
-
-const {
+import express from "express";
+import bodyParser from "body-parser";
+import {
   readTeachers,
   readStudents,
   addStudent,
@@ -12,10 +12,9 @@ const {
   updateStudent,
   updateTeacher,
   dbinitialize
-} = require ("./database.js");
+} from "./database.js";
 
 const app = express();
-const bodyParser = require  ("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -58,10 +57,7 @@ app.post("/addTeacher", async function (req, res) {
 
 app.post("/editTeacher", async function (req, res) {
   let reqBody = req.body;
-  console.log(
-    "Request received to update teacher. Req body: " + JSON.stringify(reqBody)
-  );
-  let data = await updateTeacher(reqBody.name,reqBody.age,reqBody.id);
+  let data = await updateTeacher(reqBody.name, reqBody.age, reqBody.id);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
@@ -70,10 +66,10 @@ app.post("/editTeacher", async function (req, res) {
 app.post("/deleteTeacher", async function (req, res) {
   let reqBody = req.body;
   console.log(
-    "Request received to delete teacher. Req body: " + JSON.stringify(reqBody)
+  "Request received to delete teacher. Req body: " + JSON.stringify(reqBody)
   );
   let data = await deleteTeacher(reqBody.id);
-
+  
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
@@ -102,12 +98,7 @@ app.post("/addStudent", async function (req, res) {
   console.log(
     "Request received to add student. Req body: " + JSON.stringify(reqBody)
   );
-  let data = await addStudent(
-    reqBody.id,
-    reqBody.name,
-    reqBody.age,
-    reqBody.hometown
-  );
+  let data = await addStudent(reqBody.id, reqBody.name, reqBody.age, reqBody.religion);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
@@ -126,10 +117,8 @@ app.post("/deleteStudent", async function (req, res) {
 
 app.post("/editStudent", async function (req, res) {
   let reqBody = req.body;
-  console.log(
-    "Request received to update Student. Req body: " + JSON.stringify(reqBody)
-  );
-  let data = await updateStudent(reqBody.name,reqBody.age,reqBody.hometown,reqBody.id);
+
+  let data = await updateStudent(reqBody.name,reqBody.age,reqBody.religion,reqBody.id);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
