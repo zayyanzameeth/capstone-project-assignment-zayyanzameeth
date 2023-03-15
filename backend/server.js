@@ -49,7 +49,7 @@ app.post("/addTeacher", async function (req, res) {
   console.log(
     "Request received to add teacher. Req body: " + JSON.stringify(reqBody)
   );
-  let data = await addTeacher(reqBody.id, reqBody.name, reqBody.age);
+  let data = await addTeacher(reqBody.id, reqBody.name, reqBody.age, reqBody.religion);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
@@ -57,7 +57,7 @@ app.post("/addTeacher", async function (req, res) {
 
 app.post("/editTeacher", async function (req, res) {
   let reqBody = req.body;
-  let data = await updateTeacher(reqBody.name, reqBody.age, reqBody.id);
+  let data = await updateTeacher(reqBody.name, reqBody.age, reqBody.religion, reqBody.id);
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
