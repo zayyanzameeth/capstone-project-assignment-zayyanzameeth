@@ -43,10 +43,10 @@ export class StudentTableComponent implements OnInit {
   }
 
   deleteStudent(itemid){
-    const student = {
+    const test = {
       id: itemid
     }
-    this.service.deleteStudent(student).subscribe((response)=>{
+    this.service.deleteStudent(test).subscribe((response)=>{
       this.getStudentData()
     })
   }
@@ -64,6 +64,6 @@ export class StudentTableComponent implements OnInit {
       });
       this.studentData = foundItems; // update the studentData array with the filtered results
     }
-  }
+  }  
   
 }

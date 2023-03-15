@@ -20,12 +20,12 @@ export class AddNewStudentComponent implements OnInit {
       id : value.id,
       name : value.name,
       age : value.age,
-      hometown : value.Hometown
+      hometown : value.hometown
     }
 
 
     this.service.addStudent(student).subscribe((response)=>{
-      this.router.navigate(['student'])
+      this.router.navigate([''])
     },(error)=>{
       console.log('ERROR - ', error)
     })
